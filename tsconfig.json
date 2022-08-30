@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+      "target": "es2018",
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "sourceMap": true,
+      "removeComments": true,
+      "noImplicitAny": true,
+      "outDir": "./output",
+      "rootDir": "./src",
+      "strict": true,
+      "jsx": "react"
+    },
+    "exclude": [
+      "./dist",
+      "./node_modules",
+      "./output",
+      "./repositories",
+      "./scripts"
+    ]
+  }

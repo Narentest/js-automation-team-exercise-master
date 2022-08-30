@@ -1,0 +1,57 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+	font-size: 25px;
+	text-align: center;
+}
+
+.title {
+    color: lightyellow;
+    font-weight: bold;
+	text-align: center;
+	margin: 20px;
+}
+
+.device-info-list {
+	margin-top: 50px;
+}
+
+.device-info-item-container {
+    display: inline-block;
+}
+
+.device-info-item {
+    background-color: gray;
+    border: 2px solid white;
+    border-radius: 2px;
+    font-size: 20px;
+    font-weight: lighter;
+    height: 250px;
+    margin: 10px;
+    overflow: hidden;
+    padding: 10px 15px 20px 15px;
+    width: 350px;
+    text-align: center;
+}
+
+.device-info-name {
+    margin: 5px;
+}
+
+.device-info-address {
+    margin: 5px;
+}
+
+.device-info-item-screenshot {
+    max-height: 150px;
+    max-width: 300px;
+}
+
+.device-info-item-offline {
+    color: red;
+}
+
+.device-info-item-online {
+    color: green;
+}

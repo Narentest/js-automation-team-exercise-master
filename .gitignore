@@ -1,0 +1,16 @@
+# dependencies
+node_modules/
+
+# build files
+dist/index.js.LICENSE.txt
+dist/index.js
+output/
+
+# OS files
+.DS_Store
+
+# user configuration
+config.json
+
+# temp files
+temp/
