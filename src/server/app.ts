@@ -14,6 +14,7 @@ const DEVICES = {
 };
 
 express()
+
     .get('/devices', (request: express.Request, response: express.Response) => {
         response.end(JSON.stringify([
             {
@@ -30,52 +31,36 @@ express()
             }
         ] as Array<DeviceInfo>));
     })
+
     .get('/device/:address/online', (request: express.Request, response: express.Response) => {
-        const address = request.params['address'];
-        if (address === '10.198.162.1') {
-            const xbox = DEVICES['10.198.162.1'];
-            response.end(JSON.stringify(xbox.isOnline));
-        } else if (address === '10.198.162.2') {
-            const xbox = DEVICES['10.198.162.2'];
-            response.end(JSON.stringify(xbox.isOnline));
-        } else if (address === '10.198.162.3') {
-            const playStation = DEVICES['10.198.162.3'];
-            response.end(JSON.stringify(playStation.isOnline));
-        } else {
-            response.end(JSON.stringify(false));
-        }
+       const address = request.params['address'];
+       const device = (DEVICES as any)[address];
+        if (device){
+        response.end(JSON.stringify(device.isOnine));
+}
+else {
+    response.end(JSON.stringify(false));
+}
     })
+
     .get('/device/:address/screenshot', (request: express.Request, response: express.Response) => {
-        const address = request.params['address'];
-        if (address === '10.198.162.1') {
-            const xbox = DEVICES['10.198.162.1'];
-            const imageBuffer = xbox.takeScreenshot();
-            response.end(imageBuffer);
-        } else if (address === '10.198.162.2') {
-            const xbox = DEVICES['10.198.162.2'];
-            const imageBuffer = xbox.takeScreenshot();
-            response.end(imageBuffer);
+       const address = request.params['address'];
+       const device = (DEVICES as any)[address];
+        if (device){
+          const imageBuffer = device.takeScreenshot();
+          response.end(imageBuffer);
         } else {
-            response.end();
+          response.end();
         }
-    })
+      })
+
     .get('/device/:address/reboot', async (request: express.Request, response: express.Response) => {
         const address = request.params['address'];
-        if (address === '10.198.162.1') {
-            const xbox = DEVICES['10.198.162.1'];
-            await xbox.reboot();
-            response.end();
-        } else if (address === '10.198.162.2') {
-            const xbox = DEVICES['10.198.162.2'];
-            await xbox.reboot();
-            response.end();
-        } else if (address === '10.198.162.3') {
-            const playStation = DEVICES['10.198.162.3'];
-            await playStation.reboot();
-            response.end();
-        } else {
-            response.end();
+        const device = (DEVICES as any)[address];
+        if (device){
+          await device.reboot();
         }
-    })
+        response.end();
+      })
     .use(serveStatic(DIST_FOLDER_PATH))
     .listen(80);

@@ -58,24 +58,12 @@ Same goes for Cucumber JS: you can find links to the documentation at https://gi
 3. Your second task is to implement a second scenario that contains a step that reboots all devices, and checks that each device has been successfully rebooted.
 
 4. Since there are two scenarios in the feature file, change the feature file in a way that steps are reutilised between the two.
+Ans: 1 to 4 means same it will have the answer in (`src/test/reboot.feature' and 'src//test/steps.js`).
 
 Now, let's have a look at the implementation of the web server (`src/server/app.ts`).
 
 5. How would you improve code readability inside the request handlers?
-
-
-.get('/device/:address/online', (request: express.Request, response: express.Response) => {
-            const address = request.params['address'];
-            const device = DEVICES[address as any];
-            //what happens if device is undefine 
-            if (device){
-            response.end(JSON.stringify(device.isOnine));
-    }
-    else {
-        response.end(JSON.stringify(false));
-    }
-        })
-
+Ans: Please have look (`src/server/app.ts`).
 
 6. Considering the synchronous nature of JavaScript (and Node.js), do you think the implementation of one or more of the web APIs could cause significant performance issues to server?
 Ans: No, it wont ause significant performance issues to server. Because reboot made asynchronous  calls, the implimentation in parellel in syn, so it no need to wait for other device complition of rebooting.
